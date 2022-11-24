@@ -21,7 +21,7 @@ class OutputPointer extends GeneratedMessage {
   @override
   OutputPointer copyWith(void Function(OutputPointer) updates) =>
       super.copyWith((message) => updates(message as OutputPointer))
-          as OutputPointer; // ignore: deprecated_member_use
+      as OutputPointer; // ignore: deprecated_member_use
 
   @override
   OutputPointer createEmptyInstance() => create();
@@ -41,13 +41,13 @@ class OutputPointer extends GeneratedMessage {
   }
 
   factory OutputPointer.fromString(String str) => OutputPointer(
-        transactionId: Hash.fromString(str.split(':')[0]),
-        outputIndex: int.parse(str.split(':')[1]),
-      );
+    transactionId: Hash.fromString(str.split(':')[0]),
+    outputIndex: int.parse(str.split(':')[1]),
+  );
 
   @override
   factory OutputPointer.fromBuffer(List<int> i,
-          [ExtensionRegistry r = ExtensionRegistry.EMPTY]) =>
+      [ExtensionRegistry r = ExtensionRegistry.EMPTY]) =>
       create()..mergeFromBuffer(i, r);
 
   String rawJson({bool asHex = false}) => json.encode(jsonMap(asHex: asHex));
@@ -81,7 +81,7 @@ class OutputPointer extends GeneratedMessage {
   int get outputIndex => $_getIZ(1);
   @TagNumber(2)
   set outputIndex(int v) {
-    $_setUnsignedInt32(1, v);
+    (v > 0) ? $_setUnsignedInt32(1, v) : null;
   }
 
   @TagNumber(2)

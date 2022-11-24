@@ -31,6 +31,8 @@ class RADRetrieve extends GeneratedMessage {
     Iterable<StringPair>? headers,
   }) {
     final _result = create();
+    _result.kind = ((kind != null) ? kind : null)!;
+
     if (kind != null) {
       _result.kind = kind;
     }
@@ -57,7 +59,7 @@ class RADRetrieve extends GeneratedMessage {
 
   @override
   factory RADRetrieve.fromBuffer(List<int> i,
-          [ExtensionRegistry r = ExtensionRegistry.EMPTY]) =>
+      [ExtensionRegistry r = ExtensionRegistry.EMPTY]) =>
       create()..mergeFromBuffer(i, r);
 
   factory RADRetrieve.fromRawJson(String str) =>
@@ -65,25 +67,25 @@ class RADRetrieve extends GeneratedMessage {
 
   @override
   factory RADRetrieve.fromJson(Map<String, dynamic> json) => RADRetrieve(
-        kind: RADType.valueOf(json["kind"]),
-        script: List<int>.from(json["script"].map((x) => x)),
-        url: json["url"],
-        body: (json["body"] != null)
-            ? List<int>.from(json["body"].map((x) => x))
-            : null,
-        headers: (json["headers"] != null)
-            ? List<StringPair>.from((json["headers"] as Map<String, String>)
-                .entries
-                .map((e) => StringPair(left: e.key, right: e.value)))
-            : null,
-      );
+    kind: RADType.fromString(json["kind"]),
+    script: List<int>.from(json["script"].map((x) => x)),
+    url: (json["url"] != "") ? json["url"] : null,
+    body: (json["body"] != null)
+        ? List<int>.from(json["body"].map((x) => x))
+        : null,
+    headers: (json["headers"] != null)
+        ? List<StringPair>.from((json["headers"] as Map<String, String>)
+        .entries
+        .map((e) => StringPair(left: e.key, right: e.value)))
+        : null,
+  );
 
   String toRawJson({bool asHex = false}) => json.encode(jsonMap(asHex: asHex));
 
   @override
   Map<String, dynamic> jsonMap({bool asHex = false}) {
     Map<String, dynamic> _map = {
-      "kind": kind.value,
+      "kind": kind.name,
       "script": (asHex)
           ? bytesToHex(Uint8List.fromList(script))
           : List<int>.from(script.map((x) => x)),

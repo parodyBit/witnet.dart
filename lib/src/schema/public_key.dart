@@ -20,7 +20,7 @@ class PublicKey extends GeneratedMessage {
   @override
   PublicKey copyWith(void Function(PublicKey) updates) =>
       super.copyWith((message) => updates(message as PublicKey))
-          as PublicKey; // ignore: deprecated_member_use
+      as PublicKey; // ignore: deprecated_member_use
 
   @override
   PublicKey createEmptyInstance() => create();
@@ -43,7 +43,7 @@ class PublicKey extends GeneratedMessage {
 
   @override
   factory PublicKey.fromBuffer(List<int> i,
-          [ExtensionRegistry r = ExtensionRegistry.EMPTY]) =>
+      [ExtensionRegistry r = ExtensionRegistry.EMPTY]) =>
       create()..mergeFromBuffer(i, r);
 
   @override
@@ -51,11 +51,12 @@ class PublicKey extends GeneratedMessage {
       bytes: Uint8List.fromList(List<int>.from(json["bytes"].map((x) => x))));
 
   Map<String, dynamic> jsonMap({bool asHex = false}) {
+
     if (publicKey.isNotEmpty)
       return {
         "bytes": (asHex)
-            ? bytesToHex(Uint8List.fromList(publicKey.sublist(1)))
-            : publicKey.sublist(1),
+            ? bytesToHex(Uint8List.fromList(publicKey.sublist(2)))
+            : publicKey.sublist(2),
         "compressed": publicKey[0],
       };
     return {};
